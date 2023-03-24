@@ -1,0 +1,14 @@
+.restaurant-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-heading {
+  color: orangered;
+  padding-left: 10%;
+  margin-top: 1.5rem;
+  margin-bottom: 0.35rem;
+  
+}
