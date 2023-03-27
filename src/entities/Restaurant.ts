@@ -2,11 +2,13 @@ export default class Restaurant {
   private _restaurauntId: number;
   private _name: string;
   private _deliveryTime: number;
+  private _categories: string[];
 
-  constructor(restaurantId: number, name: string, deliveryTime: number) {
+  constructor(restaurantId: number, name: string, deliveryTime: number, categories: string[]) {
     this._restaurauntId = restaurantId;
     this._name = name;
     this._deliveryTime = deliveryTime;
+    this._categories = categories;
   }
  
   public get restaurauntId(): number {
@@ -26,6 +28,12 @@ export default class Restaurant {
   }
   public set deliveryTime(value: number) {
     this._deliveryTime = value;
+  }
+  public get categories(): string[] {
+    return this._categories;
+  }
+  public set categories(value: string[]) {
+    this._categories = value;
   }
 
 }
