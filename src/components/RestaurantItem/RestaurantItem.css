@@ -5,13 +5,17 @@
   width: 80%;
 }
 
+.restaurant-item:hover {
+  background-color: rgb(255, 69, 0, 0.1);
+}
+
 .restaurant-item:last-child {
   border: none;
 }
 
 .restaurant-image {
   height: 100%;
-  max-width: 100px;
+  max-width: 150px;
   flex: 1 1 33%;
   display: flex;
   align-items: center;
@@ -32,12 +36,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
+}
+
+.restaurant-name {
+  font-size: 1.75rem;
 }
 
 .restaurant-categories {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   width: 100%;
 }
 
@@ -50,10 +58,8 @@
   background: rgba(255, 69, 0, 0.5);
   color: white;
   padding: 2px 4px 2px;
-  font-size: 8px;
 }
 
 .delivery-time {
   color: gray;
-  font-size: 0.5rem;
 }
