@@ -28,6 +28,26 @@ input[type="search"]:focus, input[type="search"]:active {
   width: 65%;
   height: 75%;
   display: flex;
+
+}
+
+.search-group > button {
+  padding: 0 8px;
+  margin: 0 0 0 -2px;
+  border: none !important;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  background-color: white;
+  color: orangered;
+}
+
+.search-group > button:hover {
+  background-color: rgb(255, 255, 255, 0.75);
+}
+
+.search-group > button:active {
+  background-color: rgb(255, 255, 255, 0.25);
+  color: white;
 }
 
 .search-group > input {
@@ -35,8 +55,9 @@ input[type="search"]:focus, input[type="search"]:active {
   height: 100%;
   background-color: white;
   padding: 8px;
-  border: 2px solid orangered;
-  border-radius: 5px;
+  /* border: 2px solid orangered; */
+  border: none !important;
+  border-radius: 5px 0 0 5px;
 }
 
 .profile-pic {
