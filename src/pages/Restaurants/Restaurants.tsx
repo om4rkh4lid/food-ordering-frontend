@@ -15,6 +15,7 @@ const Restaurants: React.FC = () => {
         restaurantId
         name
         deliveryTime
+        categories
       }
     }`;
 

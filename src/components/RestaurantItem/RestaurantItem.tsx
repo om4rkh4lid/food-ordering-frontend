@@ -14,9 +14,7 @@ const RestaurantItem: React.FC<RestaurantItemProps> = ({ restaurant }) => {
       <div className="restaurant-info">
         <h3 className="restaurant-name">{restaurant.name}</h3>
         <ul className="restaurant-categories">
-          <li>Shawerma</li>
-          <li>Syrian</li>
-          <li>Oriental</li>
+          {restaurant.categories.map(category => <li>{category}</li>)}
         </ul>
         <p className="delivery-time">
           <em>Delivers in <strong>{restaurant.deliveryTime} minutes</strong></em>
