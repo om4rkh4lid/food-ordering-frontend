@@ -16,6 +16,7 @@ const Restaurants: React.FC = () => {
         name
         deliveryTime
         categories
+        photoUrl
       }
     }`;
 
