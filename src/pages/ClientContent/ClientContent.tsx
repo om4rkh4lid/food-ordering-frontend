@@ -1,12 +1,13 @@
 import Restaurants from "../Restaurants/Restaurants";
 
 interface ClientContentProps {
-  query: string;
+  searchQuery: string;
 }
 
-const ClientContent: React.FC<ClientContentProps> = ({ query }) => {
+const ClientContent: React.FC<ClientContentProps> = ({ searchQuery }) => {
+
   return (
-    <Restaurants />    
+    <Restaurants searchQuery={searchQuery} />    
   );
 };
 
