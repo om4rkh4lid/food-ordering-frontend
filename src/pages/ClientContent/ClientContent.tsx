@@ -1,6 +1,10 @@
 import Restaurants from "../Restaurants/Restaurants";
 
-const ClientContent: React.FC = () => {
+interface ClientContentProps {
+  query: string;
+}
+
+const ClientContent: React.FC<ClientContentProps> = ({ query }) => {
   return (
     <Restaurants />    
   );
