@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { HTMLInputEvent } from '../../types';
 import './NavBar.css';
 
 interface NavBarProps {
   appLogoUrl: string;
   profilePicUrl: string;
+  searchCallback: (event: HTMLInputEvent) => void;
 }
 
 const NavBar: React.FC<NavBarProps> = (props: NavBarProps) => {
