@@ -4,20 +4,20 @@ import profilePicture from './assets/profile_pic.png';
 import NavBar from './components/NavBar/NavBar'
 import ClientContent from './pages/ClientContent/ClientContent';
 import { useState } from 'react';
-import { HTMLInputEvent } from './types';
+import { SubmitEvent } from './types';
 
 function App() {
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearchChange = (event: HTMLInputEvent) => {
-    setSearchQuery(event.target.value);
+  const searchCallback = (query: string) => {
+    setSearchQuery(query);
   }
 
   return (
     <>
-      <NavBar appLogoUrl={companyLogo} profilePicUrl={profilePicture} searchCallback={handleSearchChange} />
-      <ClientContent query={searchQuery} />
+      <NavBar appLogoUrl={companyLogo} profilePicUrl={profilePicture} searchCallback={searchCallback} />
+      <ClientContent searchQuery={searchQuery} />
     </>
   )
 }
