@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import Restaurants from "../Restaurants/Restaurants";
+import Menu from "../Menu/Menu";
 
 interface ClientContentProps {
   searchQuery: string;
@@ -8,7 +8,8 @@ interface ClientContentProps {
 const ClientContent: React.FC<ClientContentProps> = ({ searchQuery }) => {
 
   return (
-    <Restaurants searchQuery={searchQuery} />    
+    // <Restaurants searchQuery={searchQuery} />    
+    <Menu />
   );
 };
 
