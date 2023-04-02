@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import axiosInstance from '../../api/axios';
-import RestaurantItem from '../../components/RestaurantItem/RestaurantItem';
-import Restaurant from '../../entities/Restaurant';
+import axiosInstance from '../../../api/axios';
+import RestaurantItem from '../../../components/RestaurantItem/RestaurantItem';
+import Restaurant from '../../../entities/Restaurant';
 import './Restaurants.css';
 
 interface RestaurantProps {
