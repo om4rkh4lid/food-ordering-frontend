@@ -9,7 +9,7 @@ const ClientContent: React.FC<ClientContentProps> = ({ searchQuery }) => {
 
   return (
     // <Restaurants searchQuery={searchQuery} />    
-    <Menu />
+    <Menu restaurantId={1} />
   );
 };
 
