@@ -3,24 +3,23 @@ import axiosInstance from '../../../api/axios';
 import RestaurantItem from '../../../components/RestaurantItem/RestaurantItem';
 import Restaurant from '../../../entities/Restaurant';
 import './Restaurants.css';
-
-interface RestaurantProps {
-  searchQuery: string;
-}
+import { useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-const Restaurants: React.FC<RestaurantProps> = ({ searchQuery }) => {
+const Restaurants: React.FC = () => {
 
+  const [searchParams] = useSearchParams();
   const [restaurants, setRestaurants] = useState([]);
   const [error, setError] = useState('');
 
   const fetch = (query: string) => {
     axiosInstance.post('/', { query })
-    .then(response => {
-      const dataName = Object.keys(response.data)[0];
-      setRestaurants(response.data[dataName]);
-    })
-    .catch(error => setError(error));
+      .then(response => {
+        const dataName = Object.keys(response.data)[0];
+        setRestaurants(response.data[dataName]);
+      })
+      .catch(error => setError(error));
   }
 
   const fetchAll = () => {
@@ -51,8 +50,9 @@ const Restaurants: React.FC<RestaurantProps> = ({ searchQuery }) => {
   }
 
   useEffect(() => {
+    const searchQuery = searchParams.get('name');
     searchQuery ? searchFor(searchQuery) : fetchAll();
-  }, [searchQuery]);
+  }, []);
 
   return (
     <>
@@ -60,7 +60,7 @@ const Restaurants: React.FC<RestaurantProps> = ({ searchQuery }) => {
       <div className="restaurant-container">
         {
           restaurants.map((restaurant: Restaurant) => {
-            return <RestaurantItem key={restaurant.name} restaurant={restaurant}/>;
+            return <RestaurantItem key={restaurant.name} restaurant={restaurant} />;
           })
         }
       </div>

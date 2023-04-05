@@ -3,13 +3,12 @@ import axiosInstance from '../../../api/axios';
 import './Menu.css';
 import MenuItem from '../../../components/MenuItem/MenuItem';
 import Item from '../../../entities/MenuItem';
+import { useParams } from 'react-router-dom';
 
-interface MenuProps {
-  restaurantId: number;
-}
 
-const Menu: React.FC<MenuProps> = ({ restaurantId }) => {
+const Menu: React.FC = () => {
 
+  const { id } = useParams();
   const [menu, setMenu] = useState([]);
   const [error, setError] = useState('');
 
@@ -27,14 +26,16 @@ const Menu: React.FC<MenuProps> = ({ restaurantId }) => {
     axiosInstance.post('/', { query })
     .then(response => {
       setMenu(response.data.menu);
-      console.log(response.data.menu);
     })
     .catch(error => setError(error))
 
   }
 
   useEffect(() => {
-    fetchMenu(restaurantId);
+    if (id) {
+      const restaurantId = parseInt(id);
+      restaurantId && fetchMenu(restaurantId);
+    }
   }, []);
 
   return (

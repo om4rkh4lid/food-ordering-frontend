@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { ChangeEvent, SubmitEvent } from '../../types';
 import CompanyLogo from '../../assets/talabat_logo.png';
 import './NavBar.css';
+import { useNavigate } from 'react-router-dom';
 
 interface NavBarProps {
   appLogoUrl: string;
   profilePicUrl: string;
-  searchCallback: (query: string) => void;
 }
 
 const NavBar: React.FC<NavBarProps> = (props: NavBarProps) => {
 
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   
   const handleInputChange = (event: ChangeEvent) => {
@@ -19,7 +20,7 @@ const NavBar: React.FC<NavBarProps> = (props: NavBarProps) => {
 
   const search = (event: SubmitEvent) =>  {
     event.preventDefault();
-    props.searchCallback(searchQuery);
+    navigate(`/restaurants?name=${searchQuery}`);
   }
 
   return (

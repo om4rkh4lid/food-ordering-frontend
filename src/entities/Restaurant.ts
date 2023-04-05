@@ -1,23 +1,23 @@
 export default class Restaurant {
-  private _restaurauntId: number;
+  private _restaurantId: number;
   private _name: string;
   private _deliveryTime: number;
   private _categories: string[];
   private _photoUrl: string;
 
   constructor(restaurantId: number, name: string, deliveryTime: number, categories: string[], photoUrl: string) {
-    this._restaurauntId = restaurantId;
+    this._restaurantId = restaurantId;
     this._name = name;
     this._deliveryTime = deliveryTime;
     this._categories = categories;
     this._photoUrl = photoUrl;
   }
  
-  public get restaurauntId(): number {
-    return this._restaurauntId;
+  public get restaurantId(): number {
+    return this._restaurantId;
   }
-  public set restaurauntId(value: number) {
-    this._restaurauntId = value;
+  public set restaurantId(value: number) {
+    this._restaurantId = value;
   }
   public get name(): string {
     return this._name;
