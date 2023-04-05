@@ -52,7 +52,7 @@ const Restaurants: React.FC = () => {
   useEffect(() => {
     const searchQuery = searchParams.get('name');
     searchQuery ? searchFor(searchQuery) : fetchAll();
-  }, []);
+  }, [searchParams]);
 
   return (
     <>
