@@ -8,6 +8,9 @@ interface MenuItemProps {
 
 
 const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
+
+  const qtyInCart = 1;
+
   return (
     <div className="menu-item">
       <div className="item-image">
@@ -23,7 +26,14 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
         <div className="price">
           <p>${item.price}</p>
         </div>
-        <button className="cta">+</button>
+        { qtyInCart === 0 ?
+          <button className="cta-atc">+ Add to cart</button>
+          : <div className='cart-ctrl-group'>
+              <button className='cart-ctrl-btn'>+</button>
+              <span className='cart-qty'>x{qtyInCart}</span>
+              <button className='cart-ctrl-btn'>-</button>
+            </div>
+        }
       </div>
     </div>
   );

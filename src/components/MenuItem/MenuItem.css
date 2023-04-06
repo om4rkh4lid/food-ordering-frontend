@@ -66,22 +66,35 @@
   font-weight: 500;
 }
 
-.cta {
-  border: 1px solid orangered;
-  border-radius: 50%;
-  background-color: orangered;
-  color: white;
-  font-size: 2rem;
-  width: 50px;
-  height: 50px;
+.cart-ctrl-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
 }
 
-.cta:hover, .cta:active {
-  border: 1px solid white;
-  border-radius: 50%;
+.cta-atc, .cart-ctrl-btn {
+  border: 1px solid orangered;
   background-color: white;
+  border-radius: 5px;
   color: orangered;
-  font-size: 2rem;
-  width: 50px;
-  height: 50px;
+  font-size: 1rem;
+  padding: 4px 8px;
 }
+
+.cart-ctrl-btn {
+  width: 2rem;
+  text-align: center;
+}
+
+.cta-atc:hover, .cart-ctrl-btn:hover {
+  border: 1px solid rgba(0,0,0,0);
+  background-color: rgba(255, 69, 0, 0.15);
+}
+
+.cta-atc:active, .cart-ctrl-btn:active {
+  border: 1px solid rgba(0,0,0,0);
+  background-color: rgba(255, 69, 0, 0.5);
+  color: white;
+}
+
