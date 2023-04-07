@@ -60,6 +60,14 @@ input[type="search"]:focus, input[type="search"]:active {
   border-radius: 5px 0 0 5px;
 }
 
+.navbar-controls {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem; 
+}
+
 .profile-pic {
   height: 100%;
   aspect-ratio: 1;
@@ -73,4 +81,31 @@ input[type="search"]:focus, input[type="search"]:active {
   height: 75%;
   border-radius: 50%;
   background-color: black;
+}
+
+.cart {
+  border: none;
+  height: 100%;
+  aspect-ratio: 1;
+  padding: 8px;
+  background-color: rgb(255, 255, 255, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart:hover {
+  background-color: rgb(255, 255, 255, 0.75);
+}
+
+.cart:active {
+  background-color: rgb(255, 255, 255, 0.25);
+}
+
+.cart > svg {
+  color: orangered;
+}
+
+.cart:active > svg {
+  color: white;
 }
