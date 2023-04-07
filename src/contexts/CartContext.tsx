@@ -5,7 +5,7 @@ type CartProviderProps = {
   children: ReactNode;
 }
 
-type CartItem = {
+export type CartItem = {
   id: number;
   qty: number;
 }
@@ -15,6 +15,8 @@ type ShoppingCartContext = {
   incrementItem: (id: number) => void;
   decrementItem: (id: number) => void;
   getItemQty: (id: number) => number;
+  removeItem: (id: number) => void;
+  clear: () => void;
 }
 
 export const CartContext = createContext<ShoppingCartContext>({} as ShoppingCartContext);
@@ -47,9 +49,16 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     return cart.find(item => item.id === id)?.qty || 0;
   }
 
+  const removeItem = (id: number) => {
+    setCart(oldCart => oldCart.filter(item => item.id !== id));
+  }
+
+  const clear = () => {
+    setCart([]);
+  }
 
   return (
-    <CartContext.Provider value={{ cart, incrementItem, decrementItem, getItemQty }}>
+    <CartContext.Provider value={{ cart, incrementItem, decrementItem, getItemQty, removeItem, clear }}>
       {children}
     </CartContext.Provider>
   );
