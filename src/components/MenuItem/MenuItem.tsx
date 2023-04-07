@@ -19,7 +19,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
         <img src={item.photo || Image} />
       </div>
       <div className="item-info">
-        <h3 className="restaurant-name">{item.name}</h3>
+        <h3 className="item-name">{item.name}</h3>
         <p className="item-description">
           <em>{item.description}</em>
         </p>

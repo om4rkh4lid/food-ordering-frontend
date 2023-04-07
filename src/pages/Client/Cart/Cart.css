@@ -1,0 +1,83 @@
+.cart-body {
+  margin: auto;
+  width: 65%;
+  padding-bottom: 72px;
+}
+
+.cart-heading {
+  color: orangered;
+  margin-top: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.cart-total {
+  width: 100%;
+  border-top: 2px dashed orangered;
+  text-align: end;
+  padding: 24px 64px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.cart-total {
+  font-size: 1.5rem;
+  color: orangered;
+}
+
+.cart-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.cart-controls > button {
+  width: 100%;
+  height: 56px;
+  background-color: white;
+  border: 1px solid orangered;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  color: orangered;
+}
+
+#proceed-btn {
+  background-color: orangered;
+  color: white;
+}
+
+#proceed-btn:hover {
+  background-color: rgb(255, 68, 0, 0.75);
+  color: white;
+}
+
+#proceed-btn:active {
+  background-color: rgb(255, 68, 0, 0.5);
+}
+
+#cancel-btn {
+  border: 1px solid red;
+  color: red;
+}
+
+#cancel-btn:hover {
+  border: 1px solid red;
+  background-color: rgb(255, 0, 0, 0.25);
+}
+
+#cancel-btn:active {
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+}
+
+#continue-btn:hover {
+  background-color: rgb(255, 69, 0, 0.25);
+}
+
+#continue-btn:active {
+  background-color: rgb(255, 69, 0);
+  color: white;
+}
