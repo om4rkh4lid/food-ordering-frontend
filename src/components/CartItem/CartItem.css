@@ -1,15 +1,15 @@
-.cart-item {
+.ci-cart-item {
   border-bottom: 0.5px solid gray;
   height: max-content;
   display: flex;
   width: 100%;
 }
 
-.cart-item:last-child {
+.ci-cart-item:last-child {
   border: none;
 }
 
-.item-image {
+.ci-item-image {
   height: 100%;
   max-width: 100px;
   flex: 1 1 33%;
@@ -19,7 +19,7 @@
   padding: 16px;
 }
 
-.item-image > img {
+.ci-item-image > img {
   border: 1px solid orangered;
   border-radius: 15px;
   height: 100%;
@@ -27,7 +27,7 @@
   object-fit: contain;
 }
 
-.item-info {
+.ci-item-info {
   flex: 1 1 67%;
   display: flex;
   flex-direction: column;
@@ -35,13 +35,12 @@
   gap: 8px;
 }
 
-.item-name {
+.ci-item-name {
   font-size: 1.25rem;
 }
 
 
-.action-section {
-
+.ci-action-section {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -51,7 +50,7 @@
   margin-right: 0;
 }
 
-.remove {
+.ci-remove {
   height: 20%;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -61,23 +60,23 @@
   font-size: 12px;
 }
 
-.remove:hover {
+.ci-remove:hover {
   background-color: rgb(255, 0, 0, 0.25);
 }
 
-.remove:active {
+.ci-remove:active {
   background-color: rgb(255, 0, 0);
   color: white;
 }
 
-.price {
+.ci-price {
   /* border: 1px solid green; */
   color: gray;
   font-size: 1.25rem;
   font-weight: 500;
 }
 
-.cart-ctrl-group {
+.ci-cart-ctrl-group {
   max-width: 125px;
   display: flex;
   justify-content: space-between;
@@ -85,7 +84,7 @@
   align-items: center;
 }
 
-.cta-atc, .cart-ctrl-btn {
+.ci-cart-ctrl-btn {
   border: 1px solid orangered;
   background-color: white;
   border-radius: 5px;
@@ -94,22 +93,22 @@
   padding: 4px 8px;
 }
 
-.cart-ctrl-btn {
+.ci-cart-ctrl-btn {
   width: 2rem;
   text-align: center;
 }
 
-.cta-atc:hover, .cart-ctrl-btn:hover {
+.ci-cart-ctrl-btn:hover {
   border: 1px solid rgba(0,0,0,0);
   background-color: rgba(255, 69, 0, 0.15);
 }
 
-.cta-atc:active, .cart-ctrl-btn:active {
+.ci-cart-ctrl-btn:active {
   border: 1px solid rgba(0,0,0,0);
   background-color: rgba(255, 69, 0, 0.5);
   color: white;
 }
 
-.cart-qty {
+.ci-cart-qty {
   color: gray;
 }
