@@ -57,6 +57,7 @@
   align-items: center;
   gap: 8px;
   min-width: 150px;
+  margin-right: 1rem;
 }
 
 .price {
@@ -98,3 +99,6 @@
   color: white;
 }
 
+.cart-qty {
+  color: gray;
+}

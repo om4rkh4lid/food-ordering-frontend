@@ -1,6 +1,7 @@
 import './MenuItem.css';
 import Image from '../../assets/profile_pic.png';
 import Item from '../../entities/MenuItem';
+import { useCart } from '../../hooks/useCart';
 
 interface MenuItemProps {
   item: Item;
@@ -9,7 +10,8 @@ interface MenuItemProps {
 
 const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
 
-  const qtyInCart = 1;
+  const { getItemQty, incrementItem, decrementItem } = useCart();
+  const qtyInCart = getItemQty(item.id);
 
   return (
     <div className="menu-item">
@@ -27,11 +29,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
           <p>${item.price}</p>
         </div>
         { qtyInCart === 0 ?
-          <button className="cta-atc">+ Add to cart</button>
+          <button className="cta-atc" onClick={() => {incrementItem(item.id)}}>+ Add to cart</button>
           : <div className='cart-ctrl-group'>
-              <button className='cart-ctrl-btn'>+</button>
-              <span className='cart-qty'>x{qtyInCart}</span>
-              <button className='cart-ctrl-btn'>-</button>
+              <button className='cart-ctrl-btn' onClick={() => {incrementItem(item.id)}}>+</button>
+              <span className='cart-qty'>x{qtyInCart}  = ${qtyInCart * item.price}</span>
+              <button className='cart-ctrl-btn' onClick={() => {decrementItem(item.id)}}>-</button>
             </div>
         }
       </div>
