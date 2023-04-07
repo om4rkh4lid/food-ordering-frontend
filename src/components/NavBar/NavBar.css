@@ -87,25 +87,26 @@ input[type="search"]:focus, input[type="search"]:active {
   border: none;
   height: 100%;
   aspect-ratio: 1;
-  padding: 8px;
-  background-color: rgb(255, 255, 255, 1);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.cart:hover {
+.cart-btn:hover {
   background-color: rgb(255, 255, 255, 0.75);
 }
 
-.cart:active {
+.cart-btn:active {
   background-color: rgb(255, 255, 255, 0.25);
-}
-
-.cart > svg {
-  color: orangered;
-}
-
-.cart:active > svg {
   color: white;
+}
+
+.cart-btn {
+  height: 75%;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 8px;
+  background-color: rgb(255, 255, 255, 1);
+  border: none;
+  color: orangered;
 }
