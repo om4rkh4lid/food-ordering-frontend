@@ -46,12 +46,12 @@ return (
       <p className="total-value">${total}</p>
     </div>
     <div className="cart-controls">
-      <button onClick={() => { navigate('/checkout') }} id="proceed-btn">Proceed to Checkout</button>
+      { cart.length > 0 && <button onClick={() => { navigate('/checkout') }} id="proceed-btn">Proceed to Checkout</button>}
       <button onClick={() => { navigate(`/restaurants/${restaurantId}`)}} id="continue-btn">Add more items</button>
-      <button onClick={() => {
+      { cart.length > 0 && <button onClick={() => {
         clear();
         navigate('/restaurants');
-      }} id="cancel-btn">Cancel Order</button>
+      }} id="cancel-btn">Cancel Order</button> }
     </div>
   </main >
 )

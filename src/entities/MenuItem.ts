@@ -8,7 +8,7 @@ export default class MenuItem {
 
   constructor(id: number, name: string, price: number, description: string, photo: string, restaurantId: number) {
     this._id = id;
-    this._restaurantId = id;
+    this._restaurantId = restaurantId;
     this._name = name;
     this._price = price;
     this._description = description;

@@ -28,6 +28,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const incrementItem = (menuItem: MenuItem) => {
+    const restaurantId = getRestaurantId();
+    if (restaurantId && restaurantId !== menuItem.restaurantId) {
+      clear();
+    }
     setCart(oldCart => {
       if (oldCart.find(item => item.spec.id === menuItem.id)) {
         return oldCart.map(item => item.spec.id === menuItem.id ? { spec: item.spec, qty: item.qty + 1 } : item );
