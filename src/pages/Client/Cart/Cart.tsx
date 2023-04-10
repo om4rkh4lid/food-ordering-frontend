@@ -9,28 +9,16 @@ import MenuItem from "../../../entities/MenuItem";
 export const Cart: React.FC = () => {
 
   const navigate = useNavigate();
-  const { cart, clear } = useCart();
+  const { cart, clear, getRestaurantId } = useCart();
   const [total, setTotal] = useState(0);
+  const [restaurantId, setRestaurantId] = useState<number>(0);
 
   useEffect(() => {
     if (cart.length > 0) {
-      // const query = `{
-      //   cartItems(idList: [${cart.map(item => item.spec.id)}]){
-      //     id,
-      //     restaurantId
-      //     name,
-      //     price,
-      //     description,
-      //     photo
-      //   }
-      // }
-      // `
-      // axiosInstance.post('/', { query })
-      //   .then(result => {
-      //     const items: MenuItem[] = result.data.cartItems;
-      //     setCartItems(items);
-      //   })
-      //   .catch(err => console.error(err.message));
+      const id = getRestaurantId();
+      id && setRestaurantId(id);
+    } else {
+      navigate('/restaurants')
     }
   }, []);
 
@@ -41,6 +29,8 @@ export const Cart: React.FC = () => {
         return previous;
       }, 0)
       setTotal(newTotal);
+    } else {
+      setTotal(0);
     }
   }, [cart])
 
@@ -57,7 +47,7 @@ return (
     </div>
     <div className="cart-controls">
       <button onClick={() => { navigate('/checkout') }} id="proceed-btn">Proceed to Checkout</button>
-      <button id="continue-btn">Add more items</button>
+      <button onClick={() => { navigate(`/restaurants/${restaurantId}`)}} id="continue-btn">Add more items</button>
       <button onClick={() => {
         clear();
         navigate('/restaurants');

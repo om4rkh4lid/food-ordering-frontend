@@ -18,6 +18,7 @@ type ShoppingCartContext = {
   getItemQty: (id: number) => number;
   removeItem: (id: number) => void;
   clear: () => void;
+  getRestaurantId: () => number | null;
 }
 
 export const CartContext = createContext<ShoppingCartContext>({} as ShoppingCartContext);
@@ -37,12 +38,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   const decrementItem = (id: number) => {
-    setCart(oldCart => {
-      const foundItem = oldCart.find(item => item.spec.id === id);
-      if (foundItem?.qty === 1) {
+    const foundItem = cart.find(item => item.spec.id === id);
+    foundItem && setCart(oldCart => {
+      if (foundItem.qty === 1) {
         return oldCart.filter(item => item.spec.id !== id);
       } else {
-        return oldCart.map(item => item.spec.id === id ? { spec: foundItem!.spec, qty: item.qty - 1 } : item);
+        return oldCart.map(item => item.spec.id === id ? { spec: item.spec, qty: item.qty - 1 } : item);
       }  
     });
   }
@@ -59,8 +60,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setCart([]);
   }
 
+  const getRestaurantId = () => {
+    return cart.length > 0 ? cart[0].spec.restaurantId : null;
+  }
+
   return (
-    <CartContext.Provider value={{ cart, incrementItem, decrementItem, getItemQty, removeItem, clear }}>
+    <CartContext.Provider value={{ cart, incrementItem, decrementItem, getItemQty, removeItem, clear, getRestaurantId }}>
       {children}
     </CartContext.Provider>
   );
