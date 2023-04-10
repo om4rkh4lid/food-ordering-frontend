@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 import MenuItem from "../entities/MenuItem";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
 type CartProviderProps = {
@@ -25,7 +26,7 @@ export const CartContext = createContext<ShoppingCartContext>({} as ShoppingCart
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useLocalStorage<CartItem[]>('shopping-cart', []);
 
   const incrementItem = (menuItem: MenuItem) => {
     const restaurantId = getRestaurantId();
