@@ -16,6 +16,7 @@ const Menu: React.FC = () => {
     const query = `{
       menu(restaurantId: ${id}) {
           id
+          restaurantId
           name
           price
           description

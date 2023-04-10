@@ -1,12 +1,14 @@
 export default class MenuItem {
   private _id: number;
+  private _restaurantId: number;
   private _name: string;
   private _price: number;
   private _photo: string;
   private _description: string;
 
-  constructor(id: number, name: string, price: number, description: string, photo: string) {
+  constructor(id: number, name: string, price: number, description: string, photo: string, restaurantId: number) {
     this._id = id;
+    this._restaurantId = id;
     this._name = name;
     this._price = price;
     this._description = description;
@@ -18,6 +20,12 @@ export default class MenuItem {
   }
   public set id(value: number) {
     this._id = value;
+  }
+  public get restaurantId(): number {
+    return this._restaurantId;
+  }
+  public set restaurantId(value: number) {
+    this._restaurantId = value;
   }
   public get name(): string {
     return this._name;

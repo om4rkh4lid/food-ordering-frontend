@@ -18,6 +18,7 @@ export const Cart: React.FC = () => {
       const query = `{
         cartItems(idList: [${cart.map(item => item.id)}]){
           id,
+          restaurantId
           name,
           price,
           description,
