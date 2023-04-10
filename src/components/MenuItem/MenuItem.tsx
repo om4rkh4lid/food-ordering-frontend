@@ -29,9 +29,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
           <p>${item.price}</p>
         </div>
         { qtyInCart === 0 ?
-          <button className="cta-atc" onClick={() => {incrementItem(item.id)}}>+ Add to cart</button>
+          <button className="cta-atc" onClick={() => {incrementItem(item)}}>+ Add to cart</button>
           : <div className='cart-ctrl-group'>
-              <button className='cart-ctrl-btn' onClick={() => {incrementItem(item.id)}}>+</button>
+              <button className='cart-ctrl-btn' onClick={() => {incrementItem(item)}}>+</button>
               <span className='cart-qty'>x{qtyInCart}  = ${qtyInCart * item.price}</span>
               <button className='cart-ctrl-btn' onClick={() => {decrementItem(item.id)}}>-</button>
             </div>

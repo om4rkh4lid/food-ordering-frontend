@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
+import MenuItem from "../entities/MenuItem";
 
 
 type CartProviderProps = {
@@ -6,13 +7,13 @@ type CartProviderProps = {
 }
 
 export type CartItem = {
-  id: number;
+  spec: MenuItem;
   qty: number;
 }
 
 type ShoppingCartContext = {
   cart: CartItem[];
-  incrementItem: (id: number) => void;
+  incrementItem: (menuItem: MenuItem) => void;
   decrementItem: (id: number) => void;
   getItemQty: (id: number) => number;
   removeItem: (id: number) => void;
@@ -25,32 +26,33 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  const incrementItem = (id: number) => {
+  const incrementItem = (menuItem: MenuItem) => {
     setCart(oldCart => {
-      if (oldCart.find(item => item.id === id)) {
-        return oldCart.map(item => item.id === id ? { id: item.id, qty: item.qty + 1 } : item );
+      if (oldCart.find(item => item.spec.id === menuItem.id)) {
+        return oldCart.map(item => item.spec.id === menuItem.id ? { spec: item.spec, qty: item.qty + 1 } : item );
       } else {
-        return [...oldCart, { id, qty: 1 }]
+        return [...oldCart, { spec: menuItem, qty: 1 }]
       }  
     });
   }
 
   const decrementItem = (id: number) => {
     setCart(oldCart => {
-      if (oldCart.find(item => item.id === id)?.qty === 1) {
-        return oldCart.filter(item => item.id !== id);
+      const foundItem = oldCart.find(item => item.spec.id === id);
+      if (foundItem?.qty === 1) {
+        return oldCart.filter(item => item.spec.id !== id);
       } else {
-        return oldCart.map(item => item.id === id ? { id: item.id, qty: item.qty - 1 } : item);
+        return oldCart.map(item => item.spec.id === id ? { spec: foundItem!.spec, qty: item.qty - 1 } : item);
       }  
     });
   }
 
   const getItemQty = (id: number) => {
-    return cart.find(item => item.id === id)?.qty || 0;
+    return cart.find(item => item.spec.id === id)?.qty || 0;
   }
 
   const removeItem = (id: number) => {
-    setCart(oldCart => oldCart.filter(item => item.id !== id));
+    setCart(oldCart => oldCart.filter(item => item.spec.id !== id));
   }
 
   const clear = () => {

@@ -10,47 +10,46 @@ export const Cart: React.FC = () => {
 
   const navigate = useNavigate();
   const { cart, clear } = useCart();
-  const [cartItems, setCartItems] = useState([] as MenuItem[]);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
     if (cart.length > 0) {
-      const query = `{
-        cartItems(idList: [${cart.map(item => item.id)}]){
-          id,
-          restaurantId
-          name,
-          price,
-          description,
-          photo
-        }
-      }
-      `
-      axiosInstance.post('/', { query })
-        .then(result => {
-          const items: MenuItem[] = result.data.cartItems;
-          setCartItems(items);
-        })
-        .catch(err => console.error(err.message));
+      // const query = `{
+      //   cartItems(idList: [${cart.map(item => item.spec.id)}]){
+      //     id,
+      //     restaurantId
+      //     name,
+      //     price,
+      //     description,
+      //     photo
+      //   }
+      // }
+      // `
+      // axiosInstance.post('/', { query })
+      //   .then(result => {
+      //     const items: MenuItem[] = result.data.cartItems;
+      //     setCartItems(items);
+      //   })
+      //   .catch(err => console.error(err.message));
     }
   }, []);
 
   useEffect(() => {
-    if (cart.length > 0 && cartItems.length > 0) {
+    if (cart.length > 0) {
       const newTotal = cart.reduce((previous, current) => {
-        previous += cartItems.find(item => item.id === current.id)!.price * current.qty;
+        previous += cart.find(item => item.spec.id === current.spec.id)!.spec.price * current.qty;
         return previous;
       }, 0)
       setTotal(newTotal);
     }
-  }, [cart, cartItems])
+  }, [cart])
 
 
 return (
   <main className="cart-body">
     <h1 className="cart-heading">Cart</h1>
     <div className="cart-container">
-      {cartItems.map(item => <CartItem key={item.id} item={item} />)}
+      {cart.map(item => <CartItem key={item.spec.id} item={item.spec} />)}
     </div>
     <div className="cart-total">
       <p className="total-label">Total</p>

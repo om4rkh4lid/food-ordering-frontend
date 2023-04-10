@@ -16,7 +16,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
       <div className="ci-item-info">
         <p className="ci-item-name">{item.name}</p>
         <div className='ci-cart-ctrl-group'>
-          <button className='ci-cart-ctrl-btn' onClick={() => { incrementItem(item.id) }}>+</button>
+          <button className='ci-cart-ctrl-btn' onClick={() => { incrementItem(item) }}>+</button>
           <span className='ci-cart-qty'>x{getItemQty(item.id)}</span>
           <button className='ci-cart-ctrl-btn' onClick={() => { decrementItem(item.id) }}>-</button>
         </div>
