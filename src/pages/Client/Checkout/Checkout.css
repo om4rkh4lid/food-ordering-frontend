@@ -16,42 +16,6 @@
   gap: 16px;
 }
 
-.delivery-address-item.active {
-  border: 2px solid orangered;
-}
-
-.delivery-address-item {
-  border: 2px solid rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.dai-title {
-  font-size: 1.25rem;
-}
-
-.dai-title>.alias {
-  font-weight: 700;
-}
-
-.dai-address {
-  display: flex;
-  gap: 8px;
-  align-items: baseline;
-}
-
-.dai-address>address {
-  font-size: 1.1rem;
-  color: rgb(0, 0, 0, 0.75);
-}
-
-.dai-description {
-  color: rgb(0, 0, 0, 0.5);
-}
-
 .da-controls {
   display: flex;
   justify-content: center;

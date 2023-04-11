@@ -1,3 +1,4 @@
+import { DeliveryAddressItem } from '../../../components/DeliveryAddressItem/DeliveryAddressItem';
 import './Checkout.css';
 
 export const Checkout: React.FC = () => {
@@ -5,32 +6,7 @@ export const Checkout: React.FC = () => {
     <main className='dai-page'>
       <h3 className='dai-heading'>Choose a delivery address</h3>
       <div className="delivery-addresses">
-        <div className="delivery-address-item active">
-          <p className='dai-title'><span className='alias'>Home</span> (El Ibrahimeyya)</p>
-          <div className="dai-address">
-            <address className='dai-address'>
-              15 Fouad Street, 1st floor
-              <p className='dai-description'>(The third apartment from the right)</p>
-            </address>
-          </div>
-        </div>
-        <div className="delivery-address-item">
-          <p className='dai-title'>El Ibrahimeyya</p>
-          <div className="dai-address">
-            <address className='dai-address'>
-              15 Fouad Street, 1st floor
-              <p className='dai-description'>(The third apartment from the right)</p>
-            </address>
-          </div>
-        </div>
-        <div className="delivery-address-item">
-          <p className='dai-title'>El Ibrahimeyya</p>
-          <div className="dai-address">
-            <address className='dai-address'>
-              15 Fouad Street, 1st floor
-            </address>
-          </div>
-        </div>
+        {[1, 2, 3].map(item => <DeliveryAddressItem key={item} />)}
       </div>
       <div className="da-controls">
         <button id='da-back-button'>Back</button>
