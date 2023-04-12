@@ -1,8 +1,13 @@
 import './DeliveryAddressItem.css'
 
-export const DeliveryAddressItem: React.FC = () => {
+type DeliveryAddressItemProps = {
+  onClick: () => void;
+  isActive: () => boolean;
+}
+
+export const DeliveryAddressItem: React.FC<DeliveryAddressItemProps> = ({ onClick, isActive }) => {
   return (
-    <div className="delivery-address-item">
+    <div onClick={onClick} className={`delivery-address-item ${isActive() ? 'active' : ''}`}>
       <p className='dai-title'><span className='alias'>Home</span> (El Ibrahimeyya)</p>
       <div className="dai-address">
         <address className='dai-address'>

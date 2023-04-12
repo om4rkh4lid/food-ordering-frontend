@@ -3,7 +3,7 @@
 }
 
 .delivery-address-item {
-  border: 2px solid rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   padding: 16px;
   display: flex;
@@ -12,7 +12,7 @@
 }
 
 .delivery-address-item:hover {
-  background-color: rgba(255, 69, 0, 0.1);
+  background-color: rgba(255, 69, 0, 0.05);
 }
 
 .dai-title {
