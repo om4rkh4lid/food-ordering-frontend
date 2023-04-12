@@ -1,10 +1,13 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { DeliveryAddressItem } from '../../../components/DeliveryAddressItem/DeliveryAddressItem';
 import './Checkout.css';
+import axiosInstance from '../../../api/axios';
+import Address from '../../../entities/Address';
 
 export const Checkout: React.FC = () => {
 
   const [selected, setSelected] = useState<number>();
+  const [addresses, setAddresses] = useState<Address[]>([]);
 
   const selectComponent = (item: number) => {
     setSelected(item);
@@ -14,16 +17,37 @@ export const Checkout: React.FC = () => {
     return selected === item;
   }
 
+  useEffect(() => {
+    const query = `{
+      addresses(userId: ${1}) {
+        id
+        alias
+        area
+        street
+        floor
+        building
+        description
+      }
+    }`
+    axiosInstance.post('/', { query })
+      .then(result => {
+        const addresses: Address[] = result.data.addresses;
+        setAddresses(addresses)
+        selectComponent(addresses[0].id);
+      })
+      .catch(error => console.error(error));
+  }, []);
 
   return (
     <main className='dai-page'>
       <h3 className='dai-heading'>Choose a delivery address</h3>
       <div className="delivery-addresses">
-        {[1, 2, 3].map(item =>
+        {addresses.map(address =>
           <DeliveryAddressItem
-            key={item}
-            onClick={() => selectComponent(item)}
-            isActive={() => isActiveComponent(item)}
+            key={address.id}
+            onClick={() => selectComponent(address.id)}
+            isActive={() => isActiveComponent(address.id)}
+            address={address}
           />)}
       </div>
       <div className="da-controls">
