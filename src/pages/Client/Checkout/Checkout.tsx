@@ -24,7 +24,7 @@ export const Checkout: React.FC = () => {
 
   useEffect(() => {
     const query = `{
-      addresses(userId: ${1}) {
+      addresses(clientId: ${1}) {
         id
         alias
         area
