@@ -9,9 +9,12 @@ export const Checkout: React.FC = () => {
 
   const [selected, setSelected] = useState<number>();
   const [addresses, setAddresses] = useState<Address[]>([]);
+  const { getDeliveryAddress, setDeliveryAddress } = useCart();
+
 
   const selectComponent = (id: number) => {
     setSelected(id);
+    setDeliveryAddress(id);
   }
 
   const isActiveComponent = (id: number) => {
@@ -34,7 +37,8 @@ export const Checkout: React.FC = () => {
       .then(result => {
         const addresses: Address[] = result.data.addresses;
         setAddresses(addresses)
-        selectComponent(addresses[0].id);
+        const chosenAddress = getDeliveryAddress();
+        chosenAddress ? selectComponent(chosenAddress) : selectComponent(addresses[0].id);
       })
       .catch(error => console.error(error));
   }, []);

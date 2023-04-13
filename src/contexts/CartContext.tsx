@@ -20,6 +20,8 @@ type ShoppingCartContext = {
   removeItem: (id: number) => void;
   clear: () => void;
   getRestaurantId: () => number | null;
+  getDeliveryAddress: () => number | null;
+  setDeliveryAddress: (id: number) => void;
 }
 
 export const CartContext = createContext<ShoppingCartContext>({} as ShoppingCartContext);
@@ -27,6 +29,15 @@ export const CartContext = createContext<ShoppingCartContext>({} as ShoppingCart
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const [cart, setCart] = useLocalStorage<CartItem[]>('shopping-cart', []);
+  const [address, setAddress] = useLocalStorage<number>('delivery-address', 0);
+
+  const getDeliveryAddress = () => {
+    return address !== 0 ? address : null;
+  }
+
+  const setDeliveryAddress = (id: number) => {
+    setAddress(id);
+  }
 
   const incrementItem = (menuItem: MenuItem) => {
     const restaurantId = getRestaurantId();
@@ -35,22 +46,20 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
     setCart(oldCart => {
       if (oldCart.find(item => item.spec.id === menuItem.id)) {
-        return oldCart.map(item => item.spec.id === menuItem.id ? { spec: item.spec, qty: item.qty + 1 } : item );
+        return oldCart.map(item => item.spec.id === menuItem.id ? { spec: item.spec, qty: item.qty + 1 } : item);
       } else {
         return [...oldCart, { spec: menuItem, qty: 1 }]
-      }  
+      }
     });
   }
 
   const decrementItem = (id: number) => {
     const foundItem = cart.find(item => item.spec.id === id);
-    foundItem && setCart(oldCart => {
-      if (foundItem.qty === 1) {
-        return oldCart.filter(item => item.spec.id !== id);
-      } else {
-        return oldCart.map(item => item.spec.id === id ? { spec: item.spec, qty: item.qty - 1 } : item);
-      }  
-    });
+    if (foundItem && foundItem.qty === 1) {
+      removeItem(foundItem.spec.id);
+    } else {
+      setCart(oldCart => oldCart.map(item => item.spec.id === id ? { spec: item.spec, qty: item.qty - 1 } : item))
+    }
   }
 
   const getItemQty = (id: number) => {
@@ -59,6 +68,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const removeItem = (id: number) => {
     setCart(oldCart => oldCart.filter(item => item.spec.id !== id));
+    setDeliveryAddress(0);
   }
 
   const clear = () => {
@@ -70,7 +80,17 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{ cart, incrementItem, decrementItem, getItemQty, removeItem, clear, getRestaurantId }}>
+    <CartContext.Provider value={{
+      cart,
+      incrementItem,
+      decrementItem,
+      getItemQty,
+      removeItem,
+      clear,
+      getRestaurantId,
+      getDeliveryAddress,
+      setDeliveryAddress
+    }}>
       {children}
     </CartContext.Provider>
   );
