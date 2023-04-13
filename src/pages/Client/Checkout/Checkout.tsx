@@ -4,13 +4,14 @@ import './Checkout.css';
 import axiosInstance from '../../../api/axios';
 import Address from '../../../entities/Address';
 import { useCart } from '../../../hooks/useCart';
+import { useNavigate } from 'react-router-dom';
 
 export const Checkout: React.FC = () => {
 
   const [selected, setSelected] = useState<number>();
   const [addresses, setAddresses] = useState<Address[]>([]);
   const { getDeliveryAddress, setDeliveryAddress } = useCart();
-
+  const navigate = useNavigate();
 
   const selectComponent = (id: number) => {
     setSelected(id);
@@ -56,9 +57,9 @@ export const Checkout: React.FC = () => {
           />)}
       </div>
       <div className="da-controls">
-        <button id='da-back-button'>Back</button>
-        <button id='da-add-button'>Add a new address</button>
-        <button id='da-proceed-button'>Proceed</button>
+        <button onClick={ () => navigate('/cart') } id='da-back-button'>Back</button>
+        <button onClick={ () => navigate('/addresses/add') } id='da-add-button'>Add a new address</button>
+        <button onClick={ () => navigate('/') } id='da-proceed-button'>Confirm Order</button>
       </div>
     </main>
   );
