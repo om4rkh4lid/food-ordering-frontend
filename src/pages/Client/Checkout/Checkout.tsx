@@ -3,18 +3,19 @@ import { DeliveryAddressItem } from '../../../components/DeliveryAddressItem/Del
 import './Checkout.css';
 import axiosInstance from '../../../api/axios';
 import Address from '../../../entities/Address';
+import { useCart } from '../../../hooks/useCart';
 
 export const Checkout: React.FC = () => {
 
   const [selected, setSelected] = useState<number>();
   const [addresses, setAddresses] = useState<Address[]>([]);
 
-  const selectComponent = (item: number) => {
-    setSelected(item);
+  const selectComponent = (id: number) => {
+    setSelected(id);
   }
 
-  const isActiveComponent = (item: number) => {
-    return selected === item;
+  const isActiveComponent = (id: number) => {
+    return selected === id;
   }
 
   useEffect(() => {
