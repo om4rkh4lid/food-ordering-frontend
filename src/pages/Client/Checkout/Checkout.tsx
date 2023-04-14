@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DeliveryAddressItem } from '../../../components/DeliveryAddressItem/DeliveryAddressItem';
 import './Checkout.css';
 import axiosInstance from '../../../api/axios';
