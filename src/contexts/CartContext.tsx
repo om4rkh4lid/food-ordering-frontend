@@ -60,6 +60,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     } else {
       setCart(oldCart => oldCart.map(item => item.spec.id === id ? { spec: item.spec, qty: item.qty - 1 } : item))
     }
+    cart.length === 0 && setDeliveryAddress(0);
   }
 
   const getItemQty = (id: number) => {
@@ -68,11 +69,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const removeItem = (id: number) => {
     setCart(oldCart => oldCart.filter(item => item.spec.id !== id));
-    setDeliveryAddress(0);
   }
 
   const clear = () => {
     setCart([]);
+    setDeliveryAddress(0);
   }
 
   const getRestaurantId = () => {

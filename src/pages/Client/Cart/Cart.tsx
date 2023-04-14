@@ -3,8 +3,6 @@ import { CartItem } from "../../../components/CartItem/CartItem";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../hooks/useCart";
 import { useEffect, useState } from "react";
-import axiosInstance from "../../../api/axios";
-import MenuItem from "../../../entities/MenuItem";
 
 export const Cart: React.FC = () => {
 

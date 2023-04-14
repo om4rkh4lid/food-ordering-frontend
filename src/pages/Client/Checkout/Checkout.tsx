@@ -10,7 +10,7 @@ export const Checkout: React.FC = () => {
 
   const [selected, setSelected] = useState<number>();
   const [addresses, setAddresses] = useState<Address[]>([]);
-  const { getDeliveryAddress, setDeliveryAddress } = useCart();
+  const { getDeliveryAddress, setDeliveryAddress, getRestaurantId, cart, clear } = useCart();
   const navigate = useNavigate();
 
   const selectComponent = (id: number) => {
@@ -44,6 +44,26 @@ export const Checkout: React.FC = () => {
       .catch(error => console.error(error));
   }, []);
 
+  const sendOrder = () => {
+    const items = cart.map(item => { return `{itemId: ${item.spec.id}, qty: ${item.qty}}` });
+    const query = `mutation {
+      createOrder(
+        clientId: 1, 
+        restaurantId: ${getRestaurantId()}, 
+        addressId: ${selected}, 
+        orderItems: [${items.join(',')}]
+        ) {
+        orderId
+      }
+    }`;
+    axiosInstance.post('/', { query })
+      .then(result => {
+        clear()
+        navigate(`/track-order/${result.data.createOrder.orderId}`);
+      })
+      .catch(error => console.error);
+  }
+
   return (
     <main className='dai-page'>
       <h3 className='dai-heading'>Choose a delivery address</h3>
@@ -57,9 +77,9 @@ export const Checkout: React.FC = () => {
           />)}
       </div>
       <div className="da-controls">
-        <button onClick={ () => navigate('/cart') } id='da-back-button'>Back</button>
-        <button onClick={ () => navigate('/addresses/add') } id='da-add-button'>Add a new address</button>
-        <button onClick={ () => navigate('/') } id='da-proceed-button'>Confirm Order</button>
+        <button onClick={() => navigate('/cart')} id='da-back-button'>Back</button>
+        <button onClick={() => navigate('/addresses/add')} id='da-add-button'>Add a new address</button>
+        <button onClick={() => sendOrder()} id='da-proceed-button'>Confirm Order</button>
       </div>
     </main>
   );
