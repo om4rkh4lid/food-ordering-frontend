@@ -1,0 +1,60 @@
+.to-main-body {
+  width: 60%;
+  margin: 64px auto;
+}
+
+.to-order-container {
+  border: 1px dashed gray;
+  border-radius: 5px;
+  margin: 0 32px;
+}
+
+.to-order-address {
+  margin: 0 32px;
+  margin-bottom: 24px;
+  font-size: 1.25rem;
+  color: gray;
+}
+
+.to-order-address > .label {
+  color: orangered;
+}
+
+.to-order-status {
+  border: 1px solid orangered;
+  border-radius: 10px;
+  color: orangered;
+  margin: 24px 32px;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.to-order-heading {
+  font-size: 1.75rem;
+  color: orangered;
+  margin: 24px 32px;
+}
+
+.to-order-items {
+  list-style: none;
+  color: gray;
+  font-size: 1.25rem;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.to-order-items > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.to-order-total {
+  font-size: 1.5rem;
+  color: orangered;
+}

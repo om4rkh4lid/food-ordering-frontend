@@ -7,6 +7,7 @@ import Menu from './pages/Client/Menu/Menu';
 import { Cart } from './pages/Client/Cart/Cart';
 import { NotFound } from './pages/NotFound/NotFound';
 import { Checkout } from './pages/Client/Checkout/Checkout';
+import { TrackOrder } from './pages/Client/TrackOrder/TrackOrder';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='restaurants' element={<Restaurants />} />
           <Route path='restaurants/:id' element={<Menu />} />
           <Route path='checkout' element={<Checkout />} />
+          <Route path='track-order/:id' element={<TrackOrder />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
