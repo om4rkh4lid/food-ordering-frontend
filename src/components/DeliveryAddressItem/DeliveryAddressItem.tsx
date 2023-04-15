@@ -1,4 +1,5 @@
 import Address from '../../entities/Address';
+import { formatFloorNumber } from '../../utils/helpers/format-floor-number';
 import './DeliveryAddressItem.css'
 
 type DeliveryAddressItemProps = {
@@ -8,20 +9,6 @@ type DeliveryAddressItemProps = {
 }
 
 export const DeliveryAddressItem: React.FC<DeliveryAddressItemProps> = ({ onClick, isActive, address }) => {
-
-  const formatFloorNumber = (floor: number) => {
-    const lastDigit = `${floor}`.slice(-1);
-    switch (parseInt(lastDigit)) {
-      case 1:
-        return `${floor}st`;
-      case 2:
-        return `${floor}nd`;
-      case 3:
-        return `${floor}rd`
-      default:
-        return `${floor}th`;
-    }
-  }
 
   return (
     <div onClick={onClick} className={`delivery-address-item ${isActive() ? 'active' : ''}`}>
